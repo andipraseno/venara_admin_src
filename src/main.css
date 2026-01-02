@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+/* ===== Windows-style modal titlebar (simple version) ===== */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  background: linear-gradient(90deg, #cce3ff, #e4f0ff, #f9fbff);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+/* Judul modal */
+.modal-header .modal-title {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Tombol close gaya Windows */
+.modal-header .btn-close {
+  background: transparent;
+  opacity: 1;
+  width: 36px;
+  height: 28px;
+  border-radius: 6px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+/* Icon close default */
+.modal-header .btn-close::before {
+  content: "×";
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hover efek seperti Windows */
+.modal-header .btn-close:hover {
+  background: #e81123;
+}
+
+.modal-header .btn-close:hover::before {
+  color: #fff;
+}
+
+/* Hilangkan default Bootstrap X icon */
+.modal-header .btn-close svg {
+  display: none !important;
+}
+
+/* ===== Modal footer dengan gaya keren seperti titlebar ===== */
+.modal-footer {
+  background: linear-gradient(90deg, #e5f0ff, #f4f9ff, #ffffff);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Tambahan efek halus supaya menyatu dengan modal-body */
+.modal-footer {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.3s ease;
+}
+
+/* Hover efek lembut jika ingin ada dinamika saat mouse di bawah */
+.modal-footer:hover {
+  background: linear-gradient(90deg, #d8e8ff, #edf6ff, #ffffff);
+}

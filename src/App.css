@@ -1,0 +1,12 @@
+.app-main {
+  transition: margin-top 0.12s ease;
+  min-height: calc(100vh - 64px);
+}
+
+.app-main2 {
+  transition: margin-top 0.12s ease;
+  min-height: calc(100vh - 64px);
+  margin-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+}

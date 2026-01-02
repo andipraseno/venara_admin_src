@@ -1,0 +1,77 @@
+.home-shell {
+  min-height: 100vh;
+}
+
+.app-main {
+  margin-top: 84px;
+  padding: 22px;
+  min-height: calc(100vh - 84px);
+}
+
+.profile-card {
+  max-width: 880px;
+  margin: auto;
+  border: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.header-bg {
+  position: relative;
+  background-image: url("/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 200px;
+  color: #fff;
+}
+
+.header-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.img-logo {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.icon-pill {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: #f8f9fa;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  flex: 0 0 auto;
+  font-size: 1rem;
+}
+
+.label {
+  font-size: 0.82rem;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.value {
+  font-size: 1rem;
+}
+
+a.link-dark {
+  text-underline-offset: 2px;
+}

@@ -1,0 +1,56 @@
+.login-background {
+  position: relative;
+  min-height: 100vh;
+  padding: 1.5rem;
+  background-image: url("/images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* overlay gelap di atas background, tapi di bawah card */
+.login-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* kartu login */
+.login-card {
+  position: relative;
+  z-index: 1; /* supaya di atas overlay */
+  width: 100%;
+  max-width: 420px;
+  padding: 0.75rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+}
+
+/* rapikan padding body card (override default bootstrap) */
+.login-card .card-body {
+  padding: 1.75rem !important;
+}
+
+/* logo di atas form */
+.login-card img {
+  height: 80px;
+}
+
+.copyright {
+  font-size: 8pt;
+}
+
+/* sedikit quality-of-life di mobile */
+@media (max-width: 576px) {
+  .login-card {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .login-card .card-body {
+    padding: 1.25rem !important;
+  }
+}
