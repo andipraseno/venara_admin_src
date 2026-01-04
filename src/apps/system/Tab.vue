@@ -243,7 +243,7 @@ export default {
 
   data() {
     return {
-      baseUrl: import.meta.env.VITE_API_ACTASYS,
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
       token: "",
       tokenHeaders: "",
       tokenList: "",
@@ -377,7 +377,7 @@ export default {
     // load combo software
     async loadSoftwareList() {
       try {
-        const url = `${this.baseUrl}/apps/software_combo`;
+        const url = `${this.actasysUrl}/system/software_combo`;
         const res = await axios.get(url, this.tokenHeaders);
         this.softwareList = res.data || [];
       } catch (e) {
@@ -388,7 +388,7 @@ export default {
 
     // init datatable
     initDataTable() {
-      const url = `${this.baseUrl}/apps/tab`;
+      const url = `${this.actasysUrl}/system/tab`;
 
       if ($.fn.dataTable && $.fn.dataTable.isDataTable("#tableTipeAbsen")) {
         $("#tableTipeAbsen").DataTable().destroy();
@@ -459,7 +459,7 @@ export default {
       this.isEditMode = true;
       this.errors = {};
 
-      const url = `${this.baseUrl}/apps/tab_show/${id}`;
+      const url = `${this.actasysUrl}/system/tab_show/${id}`;
       try {
         const resp = await axios.get(url, this.tokenHeaders);
         const data = resp.data || {};
@@ -480,7 +480,7 @@ export default {
     async submitForm() {
       this.errors = {};
 
-      const url = `${this.baseUrl}/apps/tab_add`;
+      const url = `${this.actasysUrl}/system/tab_add`;
       const payload = {
         id: this.isEditMode ? this.form.id : "",
         nama: this.form.nama,

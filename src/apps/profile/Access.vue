@@ -5,15 +5,15 @@
     <!-- ================= JUDUL ================= -->
     <div class="mb-3 mt-3">
       <h3 class="mb-1">
-        <i class="bi bi-paperclip"></i>
-        Level Karyawan
+        <i class="bi bi-buildings"></i>
+        Access
       </h3>
 
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Lampiran</a></li>
-          <li class="breadcrumb-item active">Level Karyawan</li>
+          <li class="breadcrumb-item"><a href="#">Profile</a></li>
+          <li class="breadcrumb-item active">Access</li>
         </ol>
       </nav>
     </div>
@@ -149,7 +149,7 @@
 
           <div class="modal-body">
             <div class="form-floating mb-3">
-              <input class="form-control" v-model="otorisasi.level_nama" readonly />
+              <input class="form-control" v-model="otorisasi.access_nama" readonly />
               <label>Access</label>
             </div>
 
@@ -227,7 +227,7 @@ export default {
 
   data() {
     return {
-      baseUrl: import.meta.env.VITE_API_ACTASYS,
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
 
       token: "",
       tokenHeaders: {},
@@ -250,8 +250,8 @@ export default {
       },
 
       otorisasi: {
-        level_id: "",
-        level_nama: "",
+        access_id: "",
+        access_nama: "",
         company_nama: "",
         software_id: "",
         tab_id: "",
@@ -290,7 +290,7 @@ export default {
         pageLength: 25,
 
         ajax: {
-          url: `${this.baseUrl}/lampiran/level_karyawan`,
+          url: `${this.actasysUrl}/profile/access`,
           type: "GET",
           headers: this.tokenList,
           data: (d) => {
@@ -353,7 +353,7 @@ export default {
     async openEditModal(id) {
       this.isEditMode = true;
       const res = await axios.get(
-        `${this.baseUrl}/lampiran/level_karyawan_show/${id}`,
+        `${this.actasysUrl}/profile/access_show/${id}`,
         this.tokenHeaders
       );
 
@@ -365,7 +365,7 @@ export default {
 
     async submitForm() {
       await axios.post(
-        `${this.baseUrl}/lampiran/level_karyawan_add`,
+        `${this.actasysUrl}/profile/access_add`,
         {
           id: this.isEditMode ? this.form.id : "",
           nama: this.form.nama,
@@ -386,13 +386,13 @@ export default {
     /* ================= OTORISASI ================= */
     async openOtorisasiModal(id) {
       const res = await axios.get(
-        `${this.baseUrl}/lampiran/level_karyawan_show/${id}`,
+        `${this.actasysUrl}/profile/access_show/${id}`,
         this.tokenHeaders
       );
 
       this.otorisasi = {
-        level_id: id,
-        level_nama: res.data.nama,
+        access_id: id,
+        access_nama: res.data.nama,
         software_id: "",
         tab_id: "",
         list_otorisasi: [],
@@ -404,7 +404,7 @@ export default {
 
     async fetchOtorisasi() {
       const res = await axios.get(
-        `${this.baseUrl}/lampiran/otorisasi_show/${this.otorisasi.level_id}/${this.otorisasi.tab_id}`,
+        `${this.actasysUrl}/profile/otorisasi_show/${this.otorisasi.access_id}/${this.otorisasi.tab_id}`,
         this.tokenHeaders
       );
 
@@ -417,15 +417,15 @@ export default {
     async handleToggleOtorisasi(m) {
       const url = m.aktif ? "otorisasi_save" : "otorisasi_delete";
       await axios.post(
-        `${this.baseUrl}/lampiran/${url}`,
-        { level_id: this.otorisasi.level_id, module_id: m.id },
+        `${this.actasysUrl}/profile/${url}`,
+        { access_id: this.otorisasi.access_id, module_id: m.id },
         this.tokenHeaders
       );
     },
 
     /* ================= MASTER DATA ================= */
     async loadSoftwareList() {
-      const res = await axios.get(`${this.baseUrl}/apps/software_combo`, this.tokenHeaders);
+      const res = await axios.get(`${this.actasysUrl}/system/software_combo`, this.tokenHeaders);
       this.softwareList = res.data || [];
     },
 
@@ -434,7 +434,7 @@ export default {
       this.otorisasi.tab_id = "";
 
       const res = await axios.get(
-        `${this.baseUrl}/apps/tab_combo/${this.otorisasi.software_id}`,
+        `${this.actasysUrl}/system/tab_combo/${this.otorisasi.software_id}`,
         this.tokenHeaders
       );
       this.tabList = res.data || [];
@@ -443,4 +443,4 @@ export default {
 };
 </script>
 
-<style scoped src="@/apps/lampiran/levelkaryawan.css"></style>
+<style scoped src="@/apps/profile/Access.css"></style>

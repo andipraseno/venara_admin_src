@@ -13,12 +13,9 @@ import Module from "../apps/system/Module.vue";
 import Holding from "../apps/profile/Holding.vue";
 import Company from "../apps/profile/Company.vue";
 import Branch from "../apps/profile/Branch.vue";
-import Store from "../apps/profile/Store.vue";
-import Station from "../apps/profile/Station.vue";
 import Default from "../apps/profile/Default.vue";
-import KodeTransaksi from "../apps/profile/KodeTransaksi.vue";
+import Access from "../apps/profile/Access.vue";
 
-import LevelKaryawan from "../apps/lampiran/LevelKaryawan.vue";
 import GroupSupplier from "../apps/lampiran/GroupSupplier.vue";
 import GroupCustomer from "../apps/lampiran/GroupCustomer.vue";
 import KategoriGudang from "../apps/lampiran/KategoriGudang.vue";
@@ -87,12 +84,9 @@ const routes = [
   { path: "/profile/holding", name: "Holding", component: Holding },
   { path: "/profile/company", name: "Company", component: Company },
   { path: "/profile/branch", name: "Branch", component: Branch },
-  { path: "/profile/store", name: "Store", component: Store },
-  { path: "/profile/station", name: "Station", component: Station },
   { path: "/profile/default", name: "Default", component: Default },
-  { path: "/profile/kode_transaksi", name: "KodeTransaksi", component: KodeTransaksi },
+  { path: "/profile/access", name: "Access", component: Access },
 
-  { path: "/lampiran/level_karyawan", name: "LevelKaryawan", component: LevelKaryawan },
   { path: "/lampiran/group_supplier", name: "GroupSupplier", component: GroupSupplier },
   { path: "/lampiran/group_customer", name: "GroupCustomer", component: GroupCustomer },
   { path: "/lampiran/kategori_gudang", name: "KategoriGudang", component: KategoriGudang },

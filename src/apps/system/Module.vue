@@ -285,7 +285,7 @@ export default {
 
   data() {
     return {
-      baseUrl: import.meta.env.VITE_API_APPS,
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
       token: "",
       tokenHeaders: "",
       tokenList: "",
@@ -410,7 +410,7 @@ export default {
 
     async loadSoftwareList() {
       try {
-        const url = `${this.baseUrl}/apps/software_combo`;
+        const url = `${this.actasysUrl}/system/software_combo`;
         const res = await axios.get(url, this.tokenHeaders);
         this.softwareList = res.data || [];
       } catch (e) {
@@ -433,7 +433,7 @@ export default {
       }
 
       try {
-        const url = `${this.baseUrl}/apps/tab_combo/${software_id}`;
+        const url = `${this.actasysUrl}/system/tab_combo/${software_id}`;
         const res = await axios.get(url, this.tokenHeaders);
         const data = res.data || [];
 
@@ -455,7 +455,7 @@ export default {
     },
 
     initDataTable() {
-      const url = `${this.baseUrl}/apps/module`;
+      const url = `${this.actasysUrl}/system/module`;
 
       if ($.fn.dataTable && $.fn.dataTable.isDataTable("#tableMesinAbsensi")) {
         $("#tableMesinAbsensi").DataTable().destroy();
@@ -535,7 +535,7 @@ export default {
       this.errors = {};
 
       try {
-        const url = `${this.baseUrl}/apps/module_show/${id}`;
+        const url = `${this.actasysUrl}/system/module_show/${id}`;
         const res = await axios.get(url, this.tokenHeaders);
         const data = res.data || {};
 
@@ -560,7 +560,7 @@ export default {
     async submitForm() {
       this.errors = {};
 
-      const url = `${this.baseUrl}/apps/module_add`;
+      const url = `${this.actasysUrl}/system/module_add`;
       const payload = {
         ...this.form,
         id: this.isEditMode ? this.form.id : "",

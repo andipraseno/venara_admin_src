@@ -256,7 +256,7 @@ export default {
 
   data() {
     return {
-      baseUrl: import.meta.env.VITE_API_ACTASYS,
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
       token: "",
       tokenHeaders: "",
       tokenList: "",
@@ -312,7 +312,7 @@ export default {
     this.tokenHeaders = { headers: { Token: "Bearer " + this.token } };
     this.tokenList = { Token: "Bearer " + this.token };
 
-    this.loadCompanyList("");
+    this.loadCompanyList();
     this.initDataTable();
 
     // delegated click handler untuk tombol edit dari DataTables
@@ -382,7 +382,7 @@ export default {
     // load company, bisa difilter per holding
     async loadCompanyList() {
       try {
-        const url = `${this.baseUrl}/profile/company_combo/${this.form.holding_id}`;
+        const url = `${this.actasysUrl}/profile/company_combo`;
         const res = await axios.get(url, this.tokenHeaders);
         this.companyList = res.data || [];
       } catch (e) {
@@ -392,7 +392,7 @@ export default {
 
     // ---------- DataTable init ----------
     initDataTable() {
-      const url = `${this.baseUrl}/profile/branch`;
+      const url = `${this.actasysUrl}/profile/branch`;
 
       this.table = $("#tblMain").DataTable({
         dom: 't<"d-flex justify-content-between align-items-center mt-3"ip>',
@@ -472,7 +472,7 @@ export default {
       this.errors = {};
 
       try {
-        const url = `${this.baseUrl}/profile/branch_show/${id}`;
+        const url = `${this.actasysUrl}/profile/branch_show/${id}`;
         const res = await axios.get(url, this.tokenHeaders);
         const data = res.data || {};
 
@@ -493,7 +493,7 @@ export default {
     async submitForm() {
       this.errors = {};
 
-      const url = `${this.baseUrl}/profile/branch_add`;
+      const url = `${this.actasysUrl}/profile/branch_add`;
       const payload = {
         id: this.isEditMode ? this.form.id : "",
         nama: this.form.nama,

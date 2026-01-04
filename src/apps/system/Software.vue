@@ -219,7 +219,7 @@ export default {
 
   data() {
     return {
-      baseUrl: import.meta.env.VITE_API_ACTASYS,
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
       token: "",
       tokenHeaders: "",
       tokenList: "",
@@ -354,7 +354,7 @@ export default {
         responsive: true,
         pageLength: 25,
         ajax: {
-          url: `${this.baseUrl}/apps/software`,
+          url: `${this.actasysUrl}/system/software`,
           type: "GET",
           headers: this.tokenList,
           data: (d) => {
@@ -415,7 +415,7 @@ export default {
       this.isEditMode = true;
       this.errors = {};
       try {
-        const res = await axios.get(`${this.baseUrl}/apps/software_show/${id}`, this.tokenHeaders);
+        const res = await axios.get(`${this.actasysUrl}/system/software_show/${id}`, this.tokenHeaders);
         const data = res.data || {};
         this.form.id = data.id ?? "";
         this.form.nama = data.nama ?? "";
@@ -443,7 +443,7 @@ export default {
       };
 
       try {
-        await axios.post(`${this.baseUrl}/apps/software_add`, payload, this.tokenHeaders);
+        await axios.post(`${this.actasysUrl}/system/software_add`, payload, this.tokenHeaders);
 
         this.hideFormModal();
         if (this.table) this.table.ajax.reload(null, false);

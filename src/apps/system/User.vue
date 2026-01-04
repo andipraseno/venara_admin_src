@@ -220,13 +220,13 @@ import "datatables.net-responsive";
 import axios from "axios";
 import { Modal } from "bootstrap";
 
-const ROOT_URL = import.meta.env.VITE_API_ACTASYS;
-
 export default {
   name: "UserList",
 
   data() {
     return {
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
+
       tableInstance: null,
       editId: null,
       isEdit: false,
@@ -333,7 +333,7 @@ export default {
       }
 
       axios
-        .get(`${ROOT_URL}/apps/access_combo/${this.form.company_id}`, this.authHeaders())
+        .get(`${this.actasysUrl}/system/access_combo/${this.form.company_id}`, this.authHeaders())
         .then((res) => {
           this.accessList = res.data || [];
         })
@@ -350,7 +350,7 @@ export default {
     /* ---- DataTable ---- */
     initTable() {
       const vm = this;
-      const url = `${ROOT_URL}/apps/user`;
+      const url = `${this.actasysUrl}/system/user`;
       const tokenHeaders = { Token: "Bearer " + localStorage.getItem("actasysToken") };
 
       if ($.fn.DataTable.isDataTable("#tableData")) {
@@ -485,7 +485,10 @@ export default {
       this.clearErrors();
 
       try {
-        const res = await axios.get(`${ROOT_URL}/apps/user_show/${id}`, this.authHeaders());
+        const res = await axios.get(
+          `${this.actasysUrl}/system/user_show/${id}`,
+          this.authHeaders()
+        );
         const data = res.data || {};
         this.editId = id;
 
@@ -509,7 +512,7 @@ export default {
     async submitTambah() {
       this.clearErrors();
 
-      const url = `${ROOT_URL}/apps/user_add`;
+      const url = `${this.actasysUrl}/system/user_add`;
       const payload = {
         ...this.form,
         id: "",
@@ -534,7 +537,7 @@ export default {
     async submitEdit() {
       this.clearErrors();
 
-      const url = `${ROOT_URL}/apps/user_add`;
+      const url = `${this.actasysUrl}/system/user_add`;
       const payload = {
         ...this.form,
         id: this.editId,

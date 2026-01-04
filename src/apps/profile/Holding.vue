@@ -286,7 +286,7 @@ export default {
 
   data() {
     return {
-      baseUrl: import.meta.env.VITE_API_ACTASYS,
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
       token: "",
       headers: "",
 
@@ -349,7 +349,7 @@ export default {
         this.loading = true;
 
         const res = await axios.get(
-          `${this.baseUrl}/profile/holding_show/${this.holding.id}`,
+          `${this.actasysUrl}/profile/holding_show/${this.holding.id}`,
           this.headers
         );
 
@@ -452,7 +452,7 @@ export default {
           by: userNama,
         };
 
-        await axios.post(`${this.baseUrl}/profile/holding_add`, payload, this.headers);
+        await axios.post(`${this.actasysUrl}/profile/holding_add`, payload, this.headers);
 
         Swal.fire("Berhasil!", "Data disimpan.", "success");
       } catch (error) {
