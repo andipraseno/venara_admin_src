@@ -112,9 +112,10 @@ export default {
 
   data() {
     return {
-      rootUrl: import.meta.env.VITE_API_ACTASYS,
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
+      appsUrl: import.meta.env.VITE_API_APPS,
       softwareId: import.meta.env.VITE_SOFTWARE_ID,
-      profileId: import.meta.env.VITE_HOLDING_ID,
+      companyId: import.meta.env.VITE_COMPANY_ID,
 
       loadingInit: true, // untuk overlay Loader
       loading: false, // untuk tombol login
@@ -156,7 +157,7 @@ export default {
         // kalau sudah ada di store, tidak usah call API lagi
         if (this.software && Object.keys(this.software).length) return;
 
-        const { data } = await axios.get(`${this.rootUrl}/loader/software/${this.softwareId}`);
+        const { data } = await axios.get(`${this.actasysUrl}/loader/software/${this.softwareId}`);
 
         const payload = data?.data || {};
 
@@ -173,7 +174,7 @@ export default {
         // kalau sudah ada di store, tidak usah call API lagi
         if (this.profile && Object.keys(this.profile).length) return;
 
-        const { data } = await axios.get(`${this.rootUrl}/loader/profile/${this.profileId}`);
+        const { data } = await axios.get(`${this.actasysUrl}/loader/profile/${this.companyId}`);
 
         const payload = data?.data || {};
 
@@ -237,26 +238,35 @@ export default {
       try {
         this.loading = true;
 
-        const { data } = await axios.post(`${this.rootUrl}/loader/login`, {
-          software_id: this.softwareId,
-          profile_id: this.profileId,
+        // LOGIN
+        const { data: loginRes } = await axios.post(`${this.appsUrl}/loader/login`, {
           nama: this.form.nama,
           password: this.form.password,
         });
 
-        // kalau API kirim token, simpan di Pinia
-        const { token, level_id, level_namaa, user_id, user_nama, user_handphone, tab, module } =
-          data.data || {};
+        const { user_id, user_nama, user_handphone, user_email, access_id, token } =
+          loginRes.data || {};
 
+        // ACCESS
+        const { data: accessRes } = await axios.post(`${this.actasysUrl}/loader/access`, {
+          access_id: access_id,
+          software_id: this.softwareId,
+        });
+
+        const { access_nama, tab, module } = accessRes.data || {};
+
+        // datetime now
         const now = Date.now();
 
+        // combine
         const dataToStore = {
-          token,
-          level_id,
-          level_namaa,
           user_id,
           user_nama,
           user_handphone,
+          user_email,
+          access_id,
+          token,
+          access_nama,
           tab,
           module,
           saved_at: now,
