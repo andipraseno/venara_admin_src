@@ -5,14 +5,17 @@
       <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
         <div>
           <h3 class="mb-1 fw-bold">
-            <i class="bi bi-calendar-week"></i>
+            <i class="bi bi-award"></i>
             SCAN TICKET
           </h3>
 
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 small">
               <li class="breadcrumb-item">
-                <a href="#">Jadwal</a>
+                <a href="#">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="#">Transaction</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">Scan Ticket</li>
             </ol>

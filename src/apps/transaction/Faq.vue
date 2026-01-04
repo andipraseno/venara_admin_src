@@ -3,7 +3,7 @@
     <!-- Judul dan Breadcrumb -->
     <div class="mb-3">
       <h3 class="mb-1">
-        <i class="bi bi-back"></i>
+        <i class="bi bi-award"></i>
         Daftar Faq
       </h3>
 

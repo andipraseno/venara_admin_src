@@ -5,7 +5,7 @@
       <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
         <div>
           <h3 class="mb-1 fw-bold">
-            <i class="bi bi-boxes"></i>
+            <i class="bi bi-award"></i>
             Blocking
           </h3>
 

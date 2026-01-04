@@ -5,7 +5,7 @@
       <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
         <div>
           <h3 class="mb-1 fw-bold">
-            <i class="bi bi-calendar-week"></i>
+            <i class="bi bi-award"></i>
             Jadwal Harian
           </h3>
 
@@ -431,6 +431,7 @@ export default {
     fetchJadwal() {
       const rootUrl = import.meta.env.VITE_API_APPS;
       const url = rootUrl + "/transaction/jadwal_harian";
+
       const payload = {
         olahraga_id: this.filter.olahraga_id,
         tanggal: dateIndoToUS(this.filter.tanggal),
@@ -445,6 +446,7 @@ export default {
       axios
         .post(url, payload, token)
         .then((res) => {
+          console.log(res.data);
           this.listJadwal = Array.isArray(res.data) ? res.data : res.data?.data || [];
         })
         .catch((err) => {
