@@ -268,6 +268,8 @@ export default {
 
   data() {
     return {
+      appsUrl: import.meta.env.VITE_API_APPS,
+
       table: null,
       quickSearch: "",
       debounceTimer: null,
@@ -293,8 +295,7 @@ export default {
     /* ---------- DataTable init ---------- */
     initDataTable() {
       const vm = this;
-      const appsUrl = import.meta.env.VITE_API_APPS;
-      const url = appsUrl + "/master/group_visitor";
+      const url = this.appsUrl + "/master/group_visitor";
       const token = { Token: "Bearer " + localStorage.getItem("actasysToken") };
 
       this.table = $("#tableTipeAbsen").DataTable({
@@ -389,8 +390,7 @@ export default {
       Object.keys(this.errors).forEach((k) => delete this.errors[k]);
       this.submitting = true;
 
-      const appsUrl = import.meta.env.VITE_API_APPS;
-      const url = appsUrl + "/master/group_visitor_add";
+      const url = this.appsUrl + "/master/group_visitor_add";
       const payload = {
         id: "",
         nama: this.form.nama,
@@ -424,8 +424,7 @@ export default {
     },
 
     openEditModal(id) {
-      const appsUrl = import.meta.env.VITE_API_APPS;
-      const url = appsUrl + `/master/group_visitor_show/${id}`;
+      const url = this.appsUrl + `/master/group_visitor_show/${id}`;
       const token = { headers: { Token: "Bearer " + localStorage.getItem("actasysToken") } };
 
       axios
@@ -449,8 +448,7 @@ export default {
       this.submitting = true;
       Object.keys(this.errors).forEach((k) => delete this.errors[k]);
 
-      const appsUrl = import.meta.env.VITE_API_APPS;
-      const url = appsUrl + `/master/group_visitor_add`;
+      const url = this.appsUrl + `/master/group_visitor_add`;
       const payload = {
         id: this.form.id,
         nama: this.form.nama,
