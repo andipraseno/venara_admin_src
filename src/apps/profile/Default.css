@@ -1,3 +1,250 @@
+/* =====================================================
+   BASE & RESET
+===================================================== */
+[v-cloak] {
+  display: none;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+.card-body {
+  background: #ffffff;
+}
+
+/* =====================================================
+   GRADIENT BAR HEADER (SAMA SEPERTI HOLDING PROFILE)
+===================================================== */
 .bg-gradient-brand {
-  background: linear-gradient(135deg, #000000, #7700ff);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 40%, #1e40af 100%);
+}
+
+.bg-gradient-doc {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 45%, #818cf8 100%);
+}
+
+.bg-gradient-brand,
+.bg-gradient-doc {
+  border-radius: 1rem 1rem 0 0;
+}
+
+/* Title */
+.bg-gradient-brand h4,
+.bg-gradient-doc h4 {
+  letter-spacing: 0.25px;
+}
+
+/* Subtitle */
+.bg-gradient-brand .small,
+.bg-gradient-doc .small {
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+/* Header buttons */
+.bg-gradient-brand .btn,
+.bg-gradient-doc .btn {
+  backdrop-filter: blur(6px);
+}
+
+/* Outline light button */
+.bg-gradient-brand .btn-outline-light,
+.bg-gradient-doc .btn-outline-light {
+  border-color: rgba(255, 255, 255, 0.65);
+  color: #ffffff;
+}
+
+.bg-gradient-brand .btn-outline-light:hover,
+.bg-gradient-doc .btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+/* Solid light button */
+.bg-gradient-brand .btn-light,
+.bg-gradient-doc .btn-light {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* =====================================================
+   NAV TABS
+===================================================== */
+.nav-tabs {
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  color: #6b7280;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #2563eb;
+}
+
+.nav-tabs .nav-link.active {
+  color: #1f2937;
+  font-weight: 600;
+  background: transparent;
+  border-bottom: 3px solid #2563eb;
+}
+
+/* =====================================================
+   FORM & INPUT
+===================================================== */
+.form-label {
+  font-size: 0.875rem;
+}
+
+.form-control {
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.form-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 0.15rem rgba(37, 99, 235, 0.15);
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+/* =====================================================
+   CKEDITOR (PERJANJIAN SEWA)
+===================================================== */
+.editor-perjanjian :deep(.ck-editor__editable) {
+  min-height: 520px;
+  padding: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #111827;
+}
+
+.editor-perjanjian :deep(.ck.ck-editor__main) {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.editor-perjanjian :deep(.ck.ck-toolbar) {
+  border-radius: 0.75rem 0.75rem 0 0;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Content formatting */
+.editor-perjanjian :deep(.ck-content h1),
+.editor-perjanjian :deep(.ck-content h2),
+.editor-perjanjian :deep(.ck-content h3) {
+  font-weight: 600;
+}
+
+.editor-perjanjian :deep(.ck-content p) {
+  margin-bottom: 0.75rem;
+}
+
+/* =====================================================
+   INFO BAR (TOKEN, WORD COUNT)
+===================================================== */
+.badge.text-bg-light {
+  background: #f8fafc !important;
+  border: 1px solid #e5e7eb;
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+.dropdown-item {
+  font-size: 0.85rem;
+}
+
+.dropdown-item:hover {
+  background: #eff6ff;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+.btn {
+  border-radius: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.btn-dark {
+  background: #111827;
+  border-color: #111827;
+}
+
+.btn-dark:hover {
+  background: #1f2937;
+  border-color: #1f2937;
+}
+
+/* =====================================================
+   PREVIEW (SWEETALERT / HTML)
+===================================================== */
+.swal2-html-container {
+  text-align: left;
+}
+
+.swal2-html-container h1,
+.swal2-html-container h2,
+.swal2-html-container h3 {
+  margin-top: 1rem;
+}
+
+.swal2-html-container p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   RESPONSIVE (MOBILE)
+===================================================== */
+@media (max-width: 576px) {
+  .bg-gradient-brand,
+  .bg-gradient-doc {
+    padding: 1.25rem !important;
+  }
+
+  .bg-gradient-brand h4,
+  .bg-gradient-doc h4 {
+    font-size: 1.1rem;
+  }
+
+  .nav-tabs .nav-link {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .editor-perjanjian :deep(.ck-editor__editable) {
+    min-height: 360px;
+  }
+}
+
+/* =====================================================
+   PRINT STYLE
+===================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+  }
+
+  .bg-gradient-brand,
+  .bg-gradient-doc,
+  .nav-tabs,
+  button {
+    display: none !important;
+  }
+
+  .ck-editor__editable {
+    padding: 0 !important;
+    min-height: auto !important;
+  }
 }
