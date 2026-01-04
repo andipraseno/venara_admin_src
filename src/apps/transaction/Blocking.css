@@ -1,0 +1,79 @@
+/* Breadcrumb tidy */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Card header gradient */
+.bg-gradient-lapangan {
+  background: linear-gradient(135deg, #ef4444, #f59e0b);
+}
+
+/* Sticky thead */
+.sticky-thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Row soft hover */
+.row-hover-soft:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Skeleton loader */
+.skeleton-line {
+  height: 14px;
+  background: linear-gradient(90deg, #eee 25%, #f6f6f6 37%, #eee 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 0.4rem;
+}
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Refresh spinning icon */
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Print friendly */
+@media print {
+  .btn,
+  .breadcrumb,
+  .modal {
+    display: none !important;
+  }
+  .card,
+  .card-header,
+  .table {
+    box-shadow: none !important;
+    border-color: #000 !important;
+  }
+}
+
+/* Status badges fallback colors */
+.text-bg-warning {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+}
+.text-bg-success {
+  background-color: #198754 !important;
+}
+.text-bg-secondary {
+  background-color: #6c757d !important;
+}

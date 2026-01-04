@@ -1,0 +1,43 @@
+/* Breadcrumb rapi */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+/* Kartu lembut */
+.soft-card {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 6px 24px rgba(33, 37, 41, 0.05);
+  overflow: hidden;
+}
+
+/* DataTables */
+.table thead th {
+  white-space: nowrap;
+}
+.dataTables_length,
+.dataTables_filter {
+  display: none !important;
+}
+.dataTables_info {
+  font-size: 0.875rem;
+  color: #6c757d;
+  padding: 0.75rem 1rem;
+}
+.dataTables_paginate {
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Small helper */
+.form-text {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* v-cloak */
+[v-cloak] {
+  display: none;
+}

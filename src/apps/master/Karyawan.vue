@@ -59,10 +59,9 @@
       >
         <thead class="table-light">
           <tr>
-            <th></th>
             <th>Nama</th>
             <th>Kode</th>
-            <th>Level</th>
+            <th>Access</th>
             <th>Jenis Kelamin</th>
             <th>Handphone</th>
             <th>Email</th>
@@ -235,15 +234,15 @@
               <div class="invalid-feedback" v-if="errors.email">{{ errors.email[0] }}</div>
             </div>
 
-            <!-- Level -->
+            <!-- Access -->
             <div class="form-floating mb-3">
-              <select class="form-select" v-model="form.level_id" id="formLevel">
-                <option value="">Pilih Level</option>
-                <option v-for="s in levelList" :key="s.id" :value="s.id">
+              <select class="form-select" v-model="form.access_id" id="formAccess">
+                <option value="">Pilih Access</option>
+                <option v-for="s in accessList" :key="s.id" :value="s.id">
                   {{ s.nama }}
                 </option>
               </select>
-              <label for="formLevel" class="form-label">Level</label>
+              <label for="formAccess" class="form-label">Access</label>
             </div>
 
             <!-- Status -->
@@ -297,15 +296,15 @@
             </div>
 
             <div class="form-floating mb-3">
-              <select class="form-select" v-model="filter.level_id" id="filterLevel">
-                <option value="">Pilih Level</option>
+              <select class="form-select" v-model="filter.access_id" id="filterAccess">
+                <option value="">Pilih Access</option>
 
-                <option v-for="s in levelList" :key="s.id" :value="s.id">
+                <option v-for="s in accessList" :key="s.id" :value="s.id">
                   {{ s.nama }}
                 </option>
               </select>
 
-              <label for="filterLevel" class="form-label">Level</label>
+              <label for="filterAccess" class="form-label">Access</label>
             </div>
 
             <div class="form-floating mb-3">
@@ -381,7 +380,8 @@ export default {
       defaultTglLahir: this.todayIndo(),
       showCal: { add: false, edit: false },
 
-      baseUrl: import.meta.env.VITE_API_ACTASYS,
+      actasysUrl: import.meta.env.VITE_API_ACTASYS,
+      appsUrl: import.meta.env.VITE_API_APPS,
       token: "",
       tokenHeaders: "",
       tokenList: "",
@@ -393,7 +393,7 @@ export default {
 
       filter: {
         nama: "",
-        level_id: "",
+        access_id: "",
         status: 1,
       },
 
@@ -408,14 +408,14 @@ export default {
         no_identitas: "",
         handphone: "",
         email: "",
-        level_id: "",
+        access_id: "",
         password: "123",
         password2: "123",
         status: 1,
       },
 
       errors: {},
-      levelList: [],
+      accessList: [],
 
       dtEditClickHandler: null,
       formShownHandler: null,
@@ -444,7 +444,7 @@ export default {
     this.tokenHeaders = { headers: { Token: "Bearer " + this.token } };
     this.tokenList = { Token: "Bearer " + this.token };
 
-    this.loadLevelList();
+    this.loadAccessList();
     this.initDataTable();
 
     // delegasi click tombol edit di dalam datatable
@@ -575,13 +575,13 @@ export default {
     },
 
     // load combo group
-    async loadLevelList() {
+    async loadAccessList() {
       try {
-        const url = `${this.baseUrl}/lampiran/level_karyawan_combo`;
+        const url = `${this.actasysUrl}/profile/access_combo`;
         const res = await axios.get(url, this.tokenHeaders);
-        this.levelList = res.data || [];
+        this.accessList = res.data || [];
       } catch (e) {
-        console.error("loadLevelList", e);
+        console.error("loadAccessList", e);
         alert("Gagal memuat daftar group. Silakan coba lagi.");
       }
     },
@@ -593,11 +593,10 @@ export default {
 
     // init datatable
     initDataTable() {
-      const url = `${this.baseUrl}/master/karyawan`;
+      const url = `${this.appsUrl}/master/karyawan`;
 
       if ($.fn.dataTable && $.fn.dataTable.isDataTable("#tableMain")) {
         $("#tableMain").DataTable().destroy();
-        $("#tableMain").empty();
       }
 
       this.table = $("#tableMain").DataTable({
@@ -612,13 +611,13 @@ export default {
           type: "GET",
           headers: this.tokenList,
           data: (d) => {
+            d.search = this.searchText;
             d.nama = this.filter.nama;
             d.status = this.filter.status;
-            d.level_id = this.filter.level_id;
+            d.access_id = this.filter.access_id;
           },
         },
         columns: [
-          { data: "id", visible: false },
           { data: "nama" },
           {
             data: "kode",
@@ -626,7 +625,7 @@ export default {
             width: "200px",
           },
           {
-            data: "level_nama",
+            data: "access_id",
             width: "200px",
           },
           {
@@ -683,7 +682,7 @@ export default {
       this.isEditMode = true;
       this.errors = {};
 
-      const url = `${this.baseUrl}/master/karyawan_show/${id}`;
+      const url = `${this.appsUrl}/master/karyawan_show/${id}`;
       try {
         const resp = await axios.get(url, this.tokenHeaders);
         const data = resp.data || {};
@@ -697,7 +696,7 @@ export default {
         this.form.no_identitas = data.no_identitas ?? "";
         this.form.handphone = data.handphone ?? "";
         this.form.email = data.email ?? "";
-        this.form.level_id = data.level_id ?? "";
+        this.form.access_id = data.access_id ?? "";
         this.form.status = typeof data.status !== "undefined" ? data.status : 1;
 
         this.showFormModal();
@@ -710,7 +709,7 @@ export default {
     async submitForm() {
       this.errors = {};
 
-      const url = `${this.baseUrl}/master/karyawan_add`;
+      const url = `${this.appsUrl}/master/karyawan_add`;
       const payload = {
         id: this.isEditMode ? this.form.id : "",
         nama: this.form.nama,
@@ -722,7 +721,7 @@ export default {
         no_identitas: this.form.no_identitas,
         handphone: this.form.handphone,
         email: this.form.email,
-        level_id: this.form.level_id,
+        access_id: this.form.access_id,
         status: this.form.status,
         by: localStorage.getItem("user_nama"),
       };
@@ -769,7 +768,7 @@ export default {
       }
 
       await axios.post(
-        `${this.baseUrl}/master/karyawan_password`,
+        `${this.appsUrl}/master/karyawan_password`,
         {
           id: this.form.id,
           password: this.form.password,
@@ -795,7 +794,7 @@ export default {
         no_identitas: "",
         handphone: "",
         email: "",
-        level_id: "",
+        access_id: "",
         status: 1,
       };
       this.errors = {};
@@ -808,7 +807,7 @@ export default {
     resetFilter() {
       this.filter = {
         nama: "",
-        level_id: "",
+        access_id: "",
         status: 1,
       };
       if (this.table) this.table.ajax.reload();

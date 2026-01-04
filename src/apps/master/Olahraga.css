@@ -1,0 +1,40 @@
+/* Breadcrumb tidy */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+/* Sticky thead */
+.sticky-thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Table hover subtle */
+.table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Hide native DataTables controls (pakai quick filter) */
+.dataTables_length,
+.dataTables_filter {
+  display: none !important;
+}
+.dataTables_info {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+.dataTables_paginate {
+  font-size: 0.875rem;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  z-index: 5;
+}

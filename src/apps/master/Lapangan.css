@@ -1,0 +1,37 @@
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.table-wrap {
+  overflow: hidden;
+}
+
+.sticky-thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* DataTables: sembunyikan search bawaan */
+.dataTables_length,
+.dataTables_filter {
+  display: none !important;
+}
+.dataTables_info {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+.dataTables_paginate {
+  font-size: 0.875rem;
+}
+
+/* Label kecil lebih tegas */
+.form-label.small {
+  font-weight: 600;
+}

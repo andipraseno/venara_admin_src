@@ -1,0 +1,77 @@
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 0;
+}
+.soft-card {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 6px 24px rgba(33, 37, 41, 0.06);
+}
+
+.kpi-card {
+  border: 0;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 24px rgba(33, 37, 41, 0.04);
+}
+.kpi-title {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+.kpi-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.section-title {
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(90deg, #0f87ff 0%, #7db7ff 100%);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.report-table {
+  font-size: 0.92rem;
+}
+.report-table td,
+.report-table th {
+  vertical-align: middle;
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .section-title {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .report-table {
+    page-break-inside: auto;
+  }
+  .report-table tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 16mm 12mm 16mm 12mm;
+  }
+}

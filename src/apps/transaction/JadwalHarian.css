@@ -1,0 +1,58 @@
+/* Breadcrumb rapih */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Card header gradien */
+.bg-gradient-lapangan {
+  background: linear-gradient(135deg, #5563de, #6f9cff);
+}
+
+/* Sticky thead saat scroll dalam table responsive */
+.sticky-thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Hover lembut */
+.row-hover-soft:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Skeleton loader */
+.skeleton-line {
+  height: 14px;
+  background: linear-gradient(90deg, #eee 25%, #f6f6f6 37%, #eee 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 0.4rem;
+}
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Print friendly */
+@media print {
+  .btn,
+  .breadcrumb,
+  .modal {
+    display: none !important;
+  }
+  .card,
+  .card-header,
+  .table {
+    box-shadow: none !important;
+    border-color: #000 !important;
+  }
+  .bg-gradient-lapangan {
+    background: #000 !important;
+    color: #fff !important;
+  }
+}

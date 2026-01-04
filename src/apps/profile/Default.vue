@@ -7,12 +7,9 @@
       >
         <div>
           <h4 class="mb-1 fw-semibold">
-            <i
-              class="bi me-2"
-              :class="activeTab === 'perjanjian' ? 'bi-file-earmark-text' : 'bi-buildings'"
-            ></i>
+            <i class="bi me-2 bi-buildings"></i>
 
-            {{ activeTab === "perjanjian" ? "Perjanjian Sewa" : "Default" }}
+            Default
           </h4>
 
           <div class="small text-white-50">
@@ -20,7 +17,10 @@
               Kelola naskah perjanjian sewa — gunakan variabel dinamis agar otomatis mengikuti
               profil perusahaan
             </span>
-            <span v-else> Pengaturan profil, perjanjian sewa, dan payment gateway </span>
+            <span v-if="activeTab === 'payment'">
+              Pengaturan pembayaran digital
+            </span>
+            <span v-else> Pengaturan profil dan setting awal </span>
           </div>
         </div>
 

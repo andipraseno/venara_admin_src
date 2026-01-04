@@ -1,0 +1,58 @@
+/* Breadcrumb */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+/* Card lembut */
+.soft-card {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 6px 24px rgba(33, 37, 41, 0.05);
+  overflow: hidden;
+}
+
+/* Search pill */
+.search-group .form-control,
+.search-group .input-group-text {
+  border: 0;
+}
+.search-group .form-control:focus {
+  box-shadow: none;
+}
+
+/* DataTables */
+.table thead th {
+  white-space: nowrap;
+}
+.dataTables_length,
+.dataTables_filter {
+  display: none !important;
+}
+.dataTables_info {
+  font-size: 0.875rem;
+  color: #6c757d;
+  padding: 0.75rem 1rem;
+}
+.dataTables_paginate {
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Offcanvas */
+.offcanvas-body .form-floating > .form-control,
+.offcanvas-body .form-floating > .form-select {
+  min-height: 3.25rem;
+}
+
+/* Chips */
+.badge strong {
+  font-weight: 600;
+}
+
+/* Helpers */
+.form-text {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
