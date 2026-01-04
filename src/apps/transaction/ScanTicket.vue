@@ -381,7 +381,7 @@ export default {
               this.loadingTicket = true;
 
               const rootUrl = import.meta.env.VITE_API_APPS;
-              const url = rootUrl + "/jadwal/scan_ticket/" + encodeURIComponent(this.scannedResult);
+              const url = rootUrl + "/transaction/scan_ticket/" + encodeURIComponent(this.scannedResult);
               const token = {
                 headers: { Token: "Bearer " + localStorage.getItem("actasysToken") },
               };
@@ -537,4 +537,4 @@ export default {
 };
 </script>
 
-<style scoped src="@/apps/jadwal/ScanTicket.css"></style>
+<style scoped src="@/apps/transaction/ScanTicket.css"></style>

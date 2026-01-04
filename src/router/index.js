@@ -23,6 +23,18 @@ import Lapangan from "../apps/master/Lapangan.vue";
 import GroupVisitor from "../apps/master/GroupVisitor.vue";
 import Visitor from "../apps/master/Visitor.vue";
 
+import JadwalHarian from "../apps/transaction/JadwalHarian.vue";
+import ScanTicket from "../apps/transaction/ScanTicket.vue";
+import Payment from "../apps/transaction/Payment.vue";
+import Reschedule from "../apps/transaction/Reschedule.vue";
+import Refund from "../apps/transaction/Refund.vue";
+import Blocking from "../apps/transaction/Blocking.vue";
+import Faq from "../apps/transaction/Faq.vue";
+import UpdateData from "../apps/transaction/UpdateData.vue";
+
+import LaporanHarian from "../apps/laporan/Harian.vue";
+import LaporanPemakaian from "../apps/laporan/Pemakaian.vue";
+
 const routes = [
   { path: "/", name: "Login", component: Login },
   { path: "/login", name: "LoginPage", component: Login },
@@ -44,6 +56,18 @@ const routes = [
   { path: "/master/lapangan", name: "Lapangan", component: Lapangan },
   { path: "/master/group_visitor", name: "GroupVisitor", component: GroupVisitor },
   { path: "/master/visitor", name: "Visitor", component: Visitor },
+
+  { path: "/transaction/jadwal_harian", name: "JadwalHarian", component: JadwalHarian },
+  { path: "/transaction/scan_ticket", name: "ScanTicket", component: ScanTicket },
+  { path: "/transaction/payment", name: "Payment", component: Payment },
+  { path: "/transaction/reschedule", name: "Reschedule", component: Reschedule },
+  { path: "/transaction/refund", name: "Refund", component: Refund },
+  { path: "/transaction/blocking", name: "Blocking", component: Blocking },
+  { path: "/transaction/faq", name: "Faq", component: Faq },
+  { path: "/transaction/update_data", name: "UpdateData", component: UpdateData },
+
+  { path: "/laporan/harian", name: "LaporanHarian", component: LaporanHarian },
+  { path: "/laporan/pemakaian", name: "LaporanPemakaian", component: LaporanPemakaian },
 
   {
     path: "/:pathMatch(.*)*",

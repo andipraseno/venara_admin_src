@@ -12,7 +12,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 small">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item"><a href="#">Jadwal</a></li>
+              <li class="breadcrumb-item"><a href="#">Transaction</a></li>
               <li class="breadcrumb-item active" aria-current="page">Jadwal Harian</li>
             </ol>
           </nav>
@@ -430,7 +430,7 @@ export default {
 
     fetchJadwal() {
       const rootUrl = import.meta.env.VITE_API_APPS;
-      const url = rootUrl + "/jadwal/jadwal_harian";
+      const url = rootUrl + "/transaction/jadwal_harian";
       const payload = {
         olahraga_id: this.filter.olahraga_id,
         tanggal: dateIndoToUS(this.filter.tanggal),
@@ -541,4 +541,4 @@ export default {
 };
 </script>
 
-<style scoped src="@/apps/jadwal/JadwalHarian.css"></style>
+<style scoped src="@/apps/transaction/JadwalHarian.css"></style>
